@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "550fa67e-1857-4ae4-b6b2-a73adac6acf4",
+		"name": "node-auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get check server",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/check",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[admin] create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test@email.com\",\r\n    \"password\": \"1212324515\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/user/signup",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"user",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[admin] login user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test@test.com\",\r\n    \"password\": \"1212324515\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/user/signin",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"user",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
