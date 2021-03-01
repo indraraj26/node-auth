@@ -1,5 +1,9 @@
 const AdminAuthModel = require('./admin.model');
 
+exports.params = async (req, res) => {
+
+}
+
 exports.SignUp = async (req, res) => {
     try {
         const {email, confirm_password, password } = req.body;
@@ -8,6 +12,7 @@ exports.SignUp = async (req, res) => {
         const result = await adminAuth.save();
         res.json(result);
     } catch(e) {
+        console.log(e)
         res.json(e)
     }
 }
