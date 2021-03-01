@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "550fa67e-1857-4ae4-b6b2-a73adac6acf4",
+		"_postman_id": "b4bfdaa2-b498-4118-9c91-a037a8da09a9",
 		"name": "node-auth",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -10,6 +10,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{url}}/check",
 					"host": [
@@ -26,15 +30,17 @@
 			"name": "[admin] create user",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"test@email.com\",\r\n    \"password\": \"1212324515\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\r\n    \"email\": \"test@addsds.com\",\r\n    \"password\": \"1212324515\",\r\n    \"confirm_password\": \"1212324515\"\r\n}"
 				},
 				"url": {
 					"raw": "{{url}}/admin/user/signup",
@@ -54,15 +60,17 @@
 			"name": "[admin] login user",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"test@test.com\",\r\n    \"password\": \"1212324515\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\r\n    \"email\": \"rd\",\r\n    \"password\": \"1212324515\"\r\n}"
 				},
 				"url": {
 					"raw": "{{url}}/admin/user/signin",
@@ -77,6 +85,71 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "[admin] user getme",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/admin/user/getMe",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"user",
+						"getMe"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDNjYjI3MzJmNzY2ZjIwYWNhNDYxYzYiLCJpYXQiOjE2MTQ1OTI2ODQsImV4cCI6MTYxNTE5NzQ4NH0.DFSK_ANgIVykIhvWiCb17xsqhbyeMr0cYka2n4ZaFLA",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "62e0c275-795c-47c5-bfcc-6df7033d1fa1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "127ca955-b403-4890-a01b-615131dea442",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }

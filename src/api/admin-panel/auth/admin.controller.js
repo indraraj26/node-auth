@@ -1,7 +1,8 @@
 const AdminAuthModel = require('./admin.model');
+const auth = require('../../auth/auth');
 
 exports.params = async (req, res) => {
-
+  next()
 }
 
 exports.SignUp = async (req, res) => {
@@ -19,15 +20,19 @@ exports.SignUp = async (req, res) => {
 
 exports.signIn = async (req,res) => {
     try {
-        const {email, password } = req.body;
-        const adminAuth = await AdminAuthModel.findOne({email}).lean().exec();
-        console.log(adminAuth, 'admin find')
+        const { email, password } = req.body;
+        const adminAuth = await AdminAuthModel.findOne({email});
         if(!adminAuth)  throw new Error({error: 'user not found'});
-        if(adminAuth.password == password) {
-            return res.json({sucess: true, login: true})
+        if(!adminAuth.authenticate(password)) {
+            return res.json({sucess: false, login: false})
         }
-        return res.json({sucess: false, login: false})
+        const token = auth.signToken(adminAuth._id)
+        return res.json({sucess: true, user: adminAuth.toJson(), token}) 
     } catch(e) {
-        res.json(e.message) 
+        res.json(e.message)  
     }
+}
+
+exports.getMe = async (req, res) => {
+    return res.json(req.user.toJson())
 }

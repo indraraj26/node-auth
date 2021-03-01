@@ -27,11 +27,12 @@ AdminAuthSchema.methods = {
         return bcrypt.hashSync(plainTxtPwd, bcrypt.genSaltSync(10));
     },
     toJson: function() {
-        const obj = this.toOject();
+        const obj = this.toObject();
         delete obj.password;
         return obj;
     }
 }
+
 const AdminAuthModel = model('adminAuth', AdminAuthSchema)
 
 module.exports = AdminAuthModel;
